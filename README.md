@@ -1,62 +1,60 @@
-```markdown
-# Firefox Profile Creator
+# Script PowerShell para Perfis e Atalhos do Firefox
 
-Este script PowerShell foi desenvolvido para criar dois perfis personalizados do Firefox (Estudos e Trabalho) e adicionar atalhos para esses perfis tanto na área de trabalho quanto no menu Iniciar do Windows 10 e 11.
+## Visão Geral
+
+Este script PowerShell automatiza a criação de dois perfis do Firefox chamados "Estudos" e "Trabalho", e gera atalhos para esses perfis na área de trabalho e no menu Iniciar. O script garante que a instalação do Firefox seja encontrada no sistema e cria os perfis e atalhos somente se o Firefox estiver disponível.
 
 ## Funcionalidades
 
-- **Criação de Perfis Personalizados:** Cria dois perfis separados no Firefox: "Estudos" e "Trabalho".
-- **Criação de Atalhos:** Adiciona atalhos para os perfis na área de trabalho e no menu Iniciar.
-- **Detecção Automática do Firefox:** O script detecta automaticamente a instalação do Firefox no sistema operacional.
-- **Compatibilidade:** Compatível com Windows 10 e Windows 11.
-
-## Como Usar
-
-1. **Download do Script:** Faça o download do script `FirefoxProfile.ps1`.
-2. **Executar o Script:** Execute o script no PowerShell com privilégios administrativos para garantir que ele tenha permissão para criar atalhos no menu Iniciar.
-
-```powershell
-powershell.exe -ExecutionPolicy Bypass -File .\FirefoxProfile.ps1
-```
-
-## Pré-requisitos
-
-- **PowerShell:** Certifique-se de ter o PowerShell instalado e atualizado.
-- **Firefox:** O Firefox deve estar instalado no sistema. O script tenta localizar a instalação do Firefox nos caminhos de instalação padrão.
-
-## Detalhes Técnicos
-
-### Funções do Script
-
-- **Find-FirefoxInstallation:** Função que tenta localizar a instalação do Firefox no sistema, verificando os caminhos padrão de instalação.
-- **Create-FirefoxProfile:** Função que cria um perfil do Firefox com o nome especificado.
-- **Create-Shortcut:** Função que cria um atalho para o perfil do Firefox na localização especificada (área de trabalho ou menu Iniciar).
-
-### Estrutura do Script
-
-1. **Detecção do Firefox:** O script verifica se o Firefox está instalado no sistema, tentando localizá-lo nos caminhos padrão de instalação.
-2. **Criação de Perfis:** Se o Firefox for encontrado, o script cria dois perfis: "Estudos" e "Trabalho".
-3. **Criação de Atalhos:** O script cria atalhos para esses perfis na área de trabalho e no menu Iniciar.
+- **Detecção Automática da Instalação do Firefox**: O script procura o executável do Firefox nos caminhos de instalação comuns.
+- **Criação de Perfis**: Cria automaticamente os perfis "Estudos" e "Trabalho" no Firefox.
+- **Criação de Atalhos**: Gera atalhos para ambos os perfis na área de trabalho e no menu Iniciar com os argumentos apropriados para abrir o Firefox com o perfil especificado.
 
 ## Vantagens
 
-- **Automação:** Automatiza a criação de perfis e atalhos do Firefox, economizando tempo.
-- **Personalização:** Permite a criação de perfis personalizados para diferentes usos (estudos e trabalho).
-- **Facilidade de Uso:** Simples de executar, basta rodar o script no PowerShell.
-- **Compatibilidade:** Funciona em várias versões do Windows (10 e 11).
+- **Eficiência**: Automatiza tarefas repetitivas, economizando tempo e reduzindo a chance de erro humano.
+- **Conveniência**: Facilita a troca entre diferentes perfis do Firefox usando atalhos.
+- **Personalização**: Personalize os nomes dos perfis e os locais dos atalhos conforme necessário.
 
-## Contribuição
+## Detalhes do Script
 
-Sinta-se à vontade para contribuir com melhorias para este script. Você pode criar issues ou enviar pull requests.
+### Função Find-FirefoxInstallation
 
-## Licença
+Esta função tenta localizar a instalação do Firefox no sistema. Primeiro, verifica se o Firefox está disponível no PATH do sistema. Se não encontrado, verifica os diretórios de instalação padrão.
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+### Função Create-FirefoxProfile
 
----
+Esta função cria um novo perfil do Firefox usando o executável do Firefox. Ela recebe um nome de perfil como parâmetro.
 
-**Autor:** Sérgio Sant'Ana Júnior
-**Contato:** [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
+### Função Create-Shortcut
+
+Esta função cria um atalho com os parâmetros especificados, incluindo nome, caminho de destino, argumentos, localização do ícone e local do atalho.
+
+## Uso
+
+1. **Baixe o Script**: Salve o script no seu computador.
+2. **Execute o Script**: Abra o PowerShell com privilégios administrativos e execute o script.
+3. **Verifique os Atalhos**: Verifique a área de trabalho e o menu Iniciar para os atalhos recém-criados.
+
+### Exemplo de Execução
+
+```powershell
+# Salve o script em um arquivo, por exemplo, CreateFirefoxProfiles.ps1
+# Abra o PowerShell como Administrador e execute o script
+.\CreateFirefoxProfiles.ps1
 ```
 
-Este README fornece uma visão geral completa do que o script faz, como usá-lo, suas vantagens e detalhes técnicos importantes. Sinta-se à vontade para ajustá-lo conforme necessário e adicionar mais detalhes específicos ao seu projeto.
+## Requisitos
+
+- **Sistema Operacional**: Windows 10 ou Windows 11
+- **PowerShell**: Versão 5.1 ou superior
+- **Firefox**: Instalado no sistema
+
+## Notas
+
+- Se o Firefox não for encontrado no sistema, o script exibirá uma mensagem indicando que o Firefox não está disponível.
+- Personalize os nomes dos perfis e os locais dos atalhos no script conforme necessário.
+
+## Contribuindo
+
+Sinta-se à vontade para fazer um fork deste repositório e enviar pull requests para melhorias ou funcionalidades adicionais. 
